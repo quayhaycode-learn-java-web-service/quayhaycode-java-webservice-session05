@@ -19,6 +19,11 @@ public class ProductController {
         return productRepository.findAll();
     }
 
+    @GetMapping("/products/{id}")
+    public Product getProductById(@PathVariable Long id){
+        return productRepository.findById(id).orElseThrow(() -> new RuntimeException(""));
+    }
+
     @PostMapping("/products")
     public Product postProduct(@RequestBody Product request){
         Product product = new Product();
